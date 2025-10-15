@@ -25,6 +25,18 @@ interface DestinationData {
 // import.meta.glob with { as: 'url', eager: true } returns a map of pathname -> url string.
 const assetUrls = import.meta.glob('/src/assets/**', { as: 'url', eager: true }) as Record<string, string>;
 
+// Helper function to resolve asset URLs
+const resolveAssetUrl = (path: string) => {
+  // Normalize path (remove leading slash if present)
+  const normalized = path.replace(/^\//, '');
+  // Try exact and fallback matches
+  if (assetUrls[`/${normalized}`]) return assetUrls[`/${normalized}`];
+  // If not exact, search for a key that ends with the filename
+  const filename = normalized.split('/').pop();
+  const matchKey = Object.keys(assetUrls).find(k => k.endsWith(filename || ''));
+  return matchKey ? assetUrls[matchKey] : path; // fallback to original path
+};
+
 const DestinationDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -353,18 +365,6 @@ const DestinationDetail = () => {
             <h2 className="text-3xl font-bold text-center mb-8 gradient-text">Photo Gallery</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {destinationData.images.map((image, index) => {
-                // Map an asset path used in the data (which may be '/src/assets/dir/name.ext')
-                // to the URL produced by Vite's import.meta.glob above.
-                const resolveAssetUrl = (path: string) => {
-                  // Normalize path (remove leading slash if present)
-                  const normalized = path.replace(/^\//, '');
-                  // Try exact and fallback matches
-                  if (assetUrls[`/${normalized}`]) return assetUrls[`/${normalized}`];
-                  // If not exact, search for a key that ends with the filename
-                  const filename = normalized.split('/').pop();
-                  const matchKey = Object.keys(assetUrls).find(k => k.endsWith(filename || ''));
-                  return matchKey ? assetUrls[matchKey] : path; // fallback to original path
-                };
                 const imageUrl = resolveAssetUrl(image);
                 // Create image metadata based on actual image filenames and content
                 const getImageInfo = (dest: string, imagePath: string, idx: number) => {

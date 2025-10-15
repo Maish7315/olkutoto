@@ -59,7 +59,7 @@ const Navigation = () => {
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
           >
             <img
-              src="/src/assets/roy.png"
+              src="roy.png"
               alt="Olkutoto Tours & Travel Logo"
               className="w-10 h-10 rounded-full object-cover"
             />

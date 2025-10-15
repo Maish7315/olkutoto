@@ -45,13 +45,13 @@ const WildebeestMigration = () => {
             <video
               ref={videoRef}
               className="w-full h-auto aspect-video object-cover"
-              poster="/src/assets/hero-kenya.jpg"
+              poster="hero-kenya.jpg"
               controls={false}
               muted={isMuted}
               loop
               playsInline
             >
-              <source src="/src/assets/wildebeest-migration.mp4" type="video/mp4" />
+              <source src="wildebeest-migration.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 

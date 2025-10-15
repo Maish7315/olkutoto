@@ -62,7 +62,7 @@ const DestinationsShowcase = () => {
     {
       title: "Lamu Island Heritage",
       description: "UNESCO World Heritage site showcasing Swahili culture, ancient architecture, and pristine beaches in a car-free paradise.",
-      image: "/src/assets/lamu.jpg",
+      image: "lamu.jpg",
       category: "Cultural Heritage",
       rating: 4.5,
       highlights: ["UNESCO Site", "Swahili Culture", "Dhow Rides", "Historic Architecture", "Car-Free Island"]
@@ -70,7 +70,7 @@ const DestinationsShowcase = () => {
     {
       title: "Hell's Gate National Park",
       description: "Walk or cycle among wildlife in this unique park featuring dramatic gorges, geothermal features, and rock climbing.",
-      image: "/src/assets/hell's gate/Hell's Gate National Park lies south of Lake….jpeg",
+      image: "hell's gate/Hell's Gate National Park lies south of Lake….jpeg",
       category: "Adventure Park",
       rating: 4.4,
       highlights: ["Walking Safaris", "Rock Climbing", "Geothermal Springs", "Cycling", "Gorge Hiking"]
@@ -78,7 +78,7 @@ const DestinationsShowcase = () => {
     {
       title: "Fort Jesus Museum",
       description: "Historic Portuguese fort in Mombasa showcasing centuries of coastal history, architecture, and maritime heritage.",
-      image: "/src/assets/mombasa_ kenya_ fort jesus museum-C__h5-AU.jpeg",
+      image: "mombasa_ kenya_ fort jesus museum-C__h5-AU.jpeg",
       category: "Historical Site",
       rating: 4.3,
       highlights: ["Portuguese Architecture", "Maritime History", "Museum Collections", "Coastal Views", "Cultural Tours"]

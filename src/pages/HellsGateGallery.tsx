@@ -33,17 +33,17 @@ const HellsGateGallery = () => {
   };
 
   const images = [
-    "/src/assets/hell's gate/hell's gate gorge, naivasha, kenya.jpeg",
-    "/src/assets/hell's gate/hell's gate national park - kenya.jpeg",
-    "/src/assets/hell's gate/Hell's Gate National Park lies south of Lake… (1).jpeg",
-    "/src/assets/hell's gate/Hell's Gate National Park lies south of Lake….jpeg",
-    "/src/assets/hell's gate/Hell's Gate National Park, Kenya (1).jpeg",
-    "/src/assets/hell's gate/Hells Gate National Park - A Day Trip From Nairobi.jpeg",
-    "/src/assets/hell's gate/Hells Gate National Park and Green Crater Lake, Kenya.jpeg",
-    "/src/assets/hell's gate/Hell’s Gate National Park, Kenya The day after….jpeg",
-    "/src/assets/hell's gate/Hell’s Gate National Park.jpeg",
-    "/src/assets/hell's gate/_Cycle with Wildlife_ Hell's Gate's Geothermal Wonders Await!__.jpeg",
-    "/src/assets/hell's gate/__🌄 1-Day Trip to Hell's Gate and Lake Naivasha….jpeg"
+    "hell's gate/hell's gate gorge, naivasha, kenya.jpeg",
+    "hell's gate/hell's gate national park - kenya.jpeg",
+    "hell's gate/Hell's Gate National Park lies south of Lake… (1).jpeg",
+    "hell's gate/Hell's Gate National Park lies south of Lake….jpeg",
+    "hell's gate/Hell's Gate National Park, Kenya (1).jpeg",
+    "hell's gate/Hells Gate National Park - A Day Trip From Nairobi.jpeg",
+    "hell's gate/Hells Gate National Park and Green Crater Lake, Kenya.jpeg",
+    "hell's gate/Hell’s Gate National Park, Kenya The day after….jpeg",
+    "hell's gate/Hell’s Gate National Park.jpeg",
+    "hell's gate/_Cycle with Wildlife_ Hell's Gate's Geothermal Wonders Await!__.jpeg",
+    "hell's gate/__🌄 1-Day Trip to Hell's Gate and Lake Naivasha….jpeg"
   ];
 
   return (

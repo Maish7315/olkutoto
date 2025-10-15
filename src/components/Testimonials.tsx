@@ -10,7 +10,7 @@ const Testimonials = () => {
       rating: 5,
       text: "The Maasai Mara experience was absolutely breathtaking! The AI-powered language support made everything so easy, and our guide spoke fluent English. Witnessing the Great Migration was a dream come true.",
       trip: "7-Day Safari Adventure",
-      image: "/src/assets/review 3.jpg"
+      image: "review 3.jpg"
     },
     {
       name: "Hans Mueller",
@@ -19,7 +19,7 @@ const Testimonials = () => {
       rating: 5,
       text: "Fantastisch! The WhatsApp booking system worked perfectly in German. The attention to detail and cultural experiences in Samburu were exceptional. Kenya exceeded all our expectations!",
       trip: "Cultural & Wildlife Tour",
-      image: "/src/assets/review 2.jpg"
+      image: "review 2.jpg"
     },
     {
       name: "Marie Dubois",
@@ -28,7 +28,7 @@ const Testimonials = () => {
       rating: 5,
       text: "Magnifique! From the pristine beaches of Diani to the elephants of Amboseli with Kilimanjaro backdrop - every moment was magical. The multilingual support made us feel at home.",
       trip: "Beach & Safari Combo",
-      image: "/src/assets/review 1 .jpg"
+      image: "review 1 .jpg"
     }
   ];
 

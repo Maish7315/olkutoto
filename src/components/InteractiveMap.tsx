@@ -173,7 +173,7 @@ const InteractiveMap = () => {
             <div
               className="glass-morphism rounded-2xl p-6 min-h-[400px] bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: `url('/src/assets/MAJESTIC SUNSET WITH LION VIEW-BhrCCGOJ.jpeg')`
+                backgroundImage: `url('MAJESTIC SUNSET WITH LION VIEW-BhrCCGOJ.jpeg')`
               }}
             >
               

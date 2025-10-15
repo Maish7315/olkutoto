@@ -1,4 +1,5 @@
 import { MessageCircle, Phone, Mail, MapPin, Globe, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import logo from "@/assets/roy-B0dLymYk.png";
 
 const Footer = () => {
   const openWhatsApp = () => {
@@ -14,7 +15,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img
-                src="/src/assets/roy.png"
+                src={logo}
                 alt="Olkutoto Tours & Travel Logo"
                 className="w-8 h-8 rounded-full object-cover"
               />

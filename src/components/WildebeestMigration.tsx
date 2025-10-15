@@ -52,6 +52,8 @@ const WildebeestMigration = () => {
               muted={isMuted}
               loop
               playsInline
+              preload="metadata"
+              autoPlay={false}
             >
               <source src={videoSrc} type="video/mp4" />
               Your browser does not support the video tag.
@@ -61,7 +63,7 @@ const WildebeestMigration = () => {
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
               <Button
                 onClick={togglePlay}
-                className="bg-black/50 hover:bg-black/70 text-white border-0"
+                className="bg-black/50 hover:bg-black/70 text-white border-0 sm:w-auto w-12 h-12 p-0"
                 size="lg"
               >
                 {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
@@ -69,7 +71,7 @@ const WildebeestMigration = () => {
 
               <Button
                 onClick={toggleMute}
-                className="bg-black/50 hover:bg-black/70 text-white border-0"
+                className="bg-black/50 hover:bg-black/70 text-white border-0 sm:w-auto w-12 h-12 p-0"
                 size="lg"
               >
                 {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
@@ -77,9 +79,9 @@ const WildebeestMigration = () => {
             </div>
 
             {/* Migration Dates Overlay */}
-            <div className="absolute top-4 right-4 bg-black/70 text-white px-4 py-2 rounded-lg">
-              <div className="text-sm font-semibold">Migration Season</div>
-              <div className="text-lg font-bold">July - October</div>
+            <div className="absolute top-4 right-4 bg-black/70 text-white px-2 sm:px-4 py-2 rounded-lg">
+              <div className="text-xs sm:text-sm font-semibold">Migration Season</div>
+              <div className="text-sm sm:text-lg font-bold">July - October</div>
             </div>
           </div>
         </div>

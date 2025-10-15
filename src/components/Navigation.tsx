@@ -53,18 +53,18 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass-morphism border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          
+
           {/* Logo */}
           <button
             onClick={() => window.location.href = '/'}
-            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity flex-shrink-0"
           >
             <img
               src={logo}
               alt="Olkutoto Tours & Travel Logo"
-              className="w-10 h-10 rounded-full object-cover"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover"
             />
-            <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
+            <span className="text-lg sm:text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
               Olkutoto Tours & Travel
             </span>
           </button>
@@ -98,12 +98,12 @@ const Navigation = () => {
           </div>
 
           {/* Right Side Controls */}
-          <div className="flex items-center space-x-4">
-            
+          <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
+
             {/* Language Selector */}
             <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-              <SelectTrigger className="w-32 border-primary/20 bg-background/50">
-                <Globe className="w-4 h-4 mr-2" />
+              <SelectTrigger className="w-24 sm:w-32 border-primary/20 bg-background/50">
+                <Globe className="w-4 h-4 mr-1 sm:mr-2" />
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

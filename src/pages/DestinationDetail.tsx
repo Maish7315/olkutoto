@@ -22,8 +22,8 @@ interface DestinationData {
 }
 
 // Resolve all assets in src/assets at build time to their final URLs.
-// import.meta.glob with { as: 'url', eager: true } returns a map of pathname -> url string.
-const assetUrls = import.meta.glob('/src/assets/**', { as: 'url', eager: true }) as Record<string, string>;
+// import.meta.glob with { query: '?url', eager: true } returns a map of pathname -> url string.
+const assetUrls = import.meta.glob('/src/assets/**', { query: '?url', eager: true }) as Record<string, string>;
 
 // Helper function to resolve asset URLs
 const resolveAssetUrl = (path: string) => {
@@ -163,8 +163,8 @@ const DestinationDetail = () => {
       name: 'Samburu National Reserve',
       description: 'Unique wildlife species not found elsewhere in Kenya, including Grevy\'s zebra, reticulated giraffe, and gerenuk antelope.',
       images: [
-        'samburu/10-Day Samburu, Nakuru, Masai Mara, Naivasha….jpeg',
-        'samburu/11-Day Samburu,Ol Pejeta, Ark, Nakuru, Mara and….jpeg',
+        'samburu/10-Day Samburu_ Nakuru_ Masai Mara_ Naivasha….jpeg',
+        'samburu/11-Day Samburu_Ol Pejeta_ Ark_ Nakuru_ Mara and….jpeg',
         'samburu/7 Days Samburu and Masai Mara Safari Itinerary Ideas.jpeg',
         'samburu/Honeymoon Breakfast - Picture of Sasaab, Samburu National Reserve - Tripadvisor.jpeg',
         'samburu/Rare Wildlife Wonders_ Discover Samburu\'s Unique Zebras and Giraffes_.jpeg',

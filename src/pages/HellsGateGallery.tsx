@@ -6,6 +6,17 @@ import { Rating } from "@/components/ui/rating";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { ArrowLeft, Calendar as CalendarIcon, MessageCircle, MapPin, Star } from "lucide-react";
+import hellsGateGorge from "@/assets/hell's gate/hell's gate gorge, naivasha, kenya.jpeg";
+import hellsGateNationalPark from "@/assets/hell's gate/hell's gate national park - kenya.jpeg";
+import hellsGateLake1 from "@/assets/hell's gate/Hell's Gate National Park lies south of Lake… (1).jpeg";
+import hellsGateLake from "@/assets/hell's gate/Hell's Gate National Park lies south of Lake….jpeg";
+import hellsGateKenya1 from "@/assets/hell's gate/Hell's Gate National Park, Kenya (1).jpeg";
+import hellsGateDayTrip from "@/assets/hell's gate/Hells Gate National Park - A Day Trip From Nairobi.jpeg";
+import hellsGateGreenCrater from "@/assets/hell's gate/Hells Gate National Park and Green Crater Lake, Kenya.jpeg";
+import hellsGateDayAfter from "@/assets/hell's gate/Hell’s Gate National Park, Kenya The day after….jpeg";
+import hellsGateMain from "@/assets/hell's gate/Hell’s Gate National Park.jpeg";
+import hellsGateCycle from "@/assets/hell's gate/_Cycle with Wildlife_ Hell's Gate's Geothermal Wonders Await!__.jpeg";
+import hellsGateTrip from "@/assets/hell's gate/__🌄 1-Day Trip to Hell's Gate and Lake Naivasha….jpeg";
 
 const HellsGateGallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -33,17 +44,17 @@ const HellsGateGallery = () => {
   };
 
   const images = [
-    "hell's gate/hell's gate gorge, naivasha, kenya.jpeg",
-    "hell's gate/hell's gate national park - kenya.jpeg",
-    "hell's gate/Hell's Gate National Park lies south of Lake… (1).jpeg",
-    "hell's gate/Hell's Gate National Park lies south of Lake….jpeg",
-    "hell's gate/Hell's Gate National Park, Kenya (1).jpeg",
-    "hell's gate/Hells Gate National Park - A Day Trip From Nairobi.jpeg",
-    "hell's gate/Hells Gate National Park and Green Crater Lake, Kenya.jpeg",
-    "hell's gate/Hell’s Gate National Park, Kenya The day after….jpeg",
-    "hell's gate/Hell’s Gate National Park.jpeg",
-    "hell's gate/_Cycle with Wildlife_ Hell's Gate's Geothermal Wonders Await!__.jpeg",
-    "hell's gate/__🌄 1-Day Trip to Hell's Gate and Lake Naivasha….jpeg"
+    hellsGateGorge,
+    hellsGateNationalPark,
+    hellsGateLake1,
+    hellsGateLake,
+    hellsGateKenya1,
+    hellsGateDayTrip,
+    hellsGateGreenCrater,
+    hellsGateDayAfter,
+    hellsGateMain,
+    hellsGateCycle,
+    hellsGateTrip
   ];
 
   return (

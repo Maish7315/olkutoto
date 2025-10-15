@@ -7,17 +7,23 @@ import AIFeatures from "@/components/AIFeatures";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 
+// Add IDs to sections for navigation
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <main>
         <Hero />
-        <WildebeestMigration />
+        <section id="experiences">
+          <WildebeestMigration />
+        </section>
         <DestinationsShowcase />
         <InteractiveMap />
         <AIFeatures />
-        <Testimonials />
+        <section id="about">
+          <Testimonials />
+        </section>
       </main>
       <Footer />
     </div>

@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import videoSrc from "@/assets/wildebeest-migration.mp4";
+import posterImg from "@/assets/hero-kenya.jpg";
 
 const WildebeestMigration = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -45,13 +47,13 @@ const WildebeestMigration = () => {
             <video
               ref={videoRef}
               className="w-full h-auto aspect-video object-cover"
-              poster="hero-kenya.jpg"
+              poster={posterImg}
               controls={false}
               muted={isMuted}
               loop
               playsInline
             >
-              <source src="wildebeest-migration.mp4" type="video/mp4" />
+              <source src={videoSrc} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 

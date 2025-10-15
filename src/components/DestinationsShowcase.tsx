@@ -5,6 +5,9 @@ import tsavoLionsImage from "@/assets/tsavo-lions.jpg";
 import amboseliImage from "@/assets/amboseli-elephants.jpg";
 import nakuruImage from "@/assets/lake-nakuru-flamingos.jpg";
 import samburuImage from "@/assets/samburu-wildlife.jpg";
+import lamuImage from "@/assets/lamu.jpg";
+import hellsGateImage from "@/assets/hell's gate/Hell's Gate National Park lies south of Lake….jpeg";
+import fortJesusImage from "@/assets/mombasa_ kenya_ fort jesus museum-C__h5-AU.jpeg";
 
 const DestinationsShowcase = () => {
   const destinations = [
@@ -62,7 +65,7 @@ const DestinationsShowcase = () => {
     {
       title: "Lamu Island Heritage",
       description: "UNESCO World Heritage site showcasing Swahili culture, ancient architecture, and pristine beaches in a car-free paradise.",
-      image: "lamu.jpg",
+      image: lamuImage,
       category: "Cultural Heritage",
       rating: 4.5,
       highlights: ["UNESCO Site", "Swahili Culture", "Dhow Rides", "Historic Architecture", "Car-Free Island"]
@@ -70,7 +73,7 @@ const DestinationsShowcase = () => {
     {
       title: "Hell's Gate National Park",
       description: "Walk or cycle among wildlife in this unique park featuring dramatic gorges, geothermal features, and rock climbing.",
-      image: "hell's gate/Hell's Gate National Park lies south of Lake….jpeg",
+      image: hellsGateImage,
       category: "Adventure Park",
       rating: 4.4,
       highlights: ["Walking Safaris", "Rock Climbing", "Geothermal Springs", "Cycling", "Gorge Hiking"]
@@ -78,7 +81,7 @@ const DestinationsShowcase = () => {
     {
       title: "Fort Jesus Museum",
       description: "Historic Portuguese fort in Mombasa showcasing centuries of coastal history, architecture, and maritime heritage.",
-      image: "mombasa_ kenya_ fort jesus museum-C__h5-AU.jpeg",
+      image: fortJesusImage,
       category: "Historical Site",
       rating: 4.3,
       highlights: ["Portuguese Architecture", "Maritime History", "Museum Collections", "Coastal Views", "Cultural Tours"]

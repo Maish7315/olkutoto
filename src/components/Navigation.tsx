@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/select";
 import { Globe, Menu, X, MessageCircle, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import logo from "@/assets/roy-B0dLymYk.png";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,7 +60,7 @@ const Navigation = () => {
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
           >
             <img
-              src="roy.png"
+              src={logo}
               alt="Olkutoto Tours & Travel Logo"
               className="w-10 h-10 rounded-full object-cover"
             />

@@ -21,6 +21,10 @@ interface DestinationData {
   price: string;
 }
 
+// Resolve all assets in src/assets at build time to their final URLs.
+// import.meta.glob with { as: 'url', eager: true } returns a map of pathname -> url string.
+const assetUrls = import.meta.glob('/src/assets/**', { as: 'url', eager: true }) as Record<string, string>;
+
 const DestinationDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -244,6 +248,8 @@ const DestinationDetail = () => {
     }
   };
 
+  // destinations is a static lookup defined in this module; disable exhaustive-deps warning for now
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (slug && destinations[slug]) {
       setDestinationData(destinations[slug]);
@@ -347,6 +353,19 @@ const DestinationDetail = () => {
             <h2 className="text-3xl font-bold text-center mb-8 gradient-text">Photo Gallery</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {destinationData.images.map((image, index) => {
+                // Map an asset path used in the data (which may be '/src/assets/dir/name.ext')
+                // to the URL produced by Vite's import.meta.glob above.
+                const resolveAssetUrl = (path: string) => {
+                  // Normalize path (remove leading slash if present)
+                  const normalized = path.replace(/^\//, '');
+                  // Try exact and fallback matches
+                  if (assetUrls[`/${normalized}`]) return assetUrls[`/${normalized}`];
+                  // If not exact, search for a key that ends with the filename
+                  const filename = normalized.split('/').pop();
+                  const matchKey = Object.keys(assetUrls).find(k => k.endsWith(filename || ''));
+                  return matchKey ? assetUrls[matchKey] : path; // fallback to original path
+                };
+                const imageUrl = resolveAssetUrl(image);
                 // Create image metadata based on actual image filenames and content
                 const getImageInfo = (dest: string, imagePath: string, idx: number) => {
                   // Extract meaningful descriptions based on actual image filenames
@@ -467,7 +486,7 @@ const DestinationDetail = () => {
                     modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4';
                     modal.innerHTML = `
                       <div class="relative max-w-4xl max-h-full">
-                        <img src="${image}" alt="${imageDescription}" class="w-full h-full object-contain rounded-lg" />
+                        <img src="${imageUrl}" alt="${imageDescription}" class="w-full h-full object-contain rounded-lg" />
                         <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-4 rounded-b-lg">
                           <p class="text-sm">${imageDescription}</p>
                         </div>
@@ -480,7 +499,7 @@ const DestinationDetail = () => {
                     });
                   }}>
                     <img
-                      src={image}
+                      src={imageUrl}
                       alt={imageDescription}
                       className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
                     />
@@ -576,6 +595,7 @@ const DestinationDetail = () => {
                     <label className="block text-sm font-medium mb-2">Number of Travelers</label>
                     <select
                       name="travelers"
+                      aria-label="Number of travelers"
                       className="w-full px-4 py-3 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="1">1 Person</option>
@@ -591,6 +611,7 @@ const DestinationDetail = () => {
                     <label className="block text-sm font-medium mb-2">Trip Duration</label>
                     <select
                       name="duration"
+                      aria-label="Trip duration"
                       className="w-full px-4 py-3 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="1-2 days">1-2 Days</option>
@@ -605,6 +626,7 @@ const DestinationDetail = () => {
                     <label className="block text-sm font-medium mb-2">Preferred Budget Range (Optional)</label>
                     <select
                       name="budget"
+                      aria-label="Preferred budget range"
                       className="w-full px-4 py-3 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select budget range (optional)</option>

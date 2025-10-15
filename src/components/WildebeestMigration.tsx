@@ -1,31 +1,6 @@
-import { useState, useRef } from 'react';
 import { Button } from "@/components/ui/button";
-import { Play, Pause, Volume2, VolumeX } from "lucide-react";
-import videoSrc from "@/assets/wildebeest-migration.mp4";
-import posterImg from "@/assets/hero-kenya.jpg";
 
 const WildebeestMigration = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
 
   return (
     <section className="py-20 bg-gradient-to-b from-background to-muted/30">
@@ -42,49 +17,26 @@ const WildebeestMigration = () => {
         </div>
 
         {/* Video Section */}
-        <div className="mb-16">
-          <div className="relative max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
-            <video
-              ref={videoRef}
-              className="w-full h-auto aspect-video object-cover"
-              poster={posterImg}
-              controls={false}
-              muted={isMuted}
-              loop
-              playsInline
-              preload="metadata"
-              autoPlay={false}
-            >
-              <source src={videoSrc} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+         <div className="mb-16">
+           <div className="relative max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+             <iframe
+               width="100%"
+               height="400"
+               src="https://www.youtube.com/embed/p6dR556ACAw"
+               title="Great Wildebeest Migration"
+               frameBorder="0"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+               allowFullScreen
+               className="w-full h-auto aspect-video"
+             ></iframe>
 
-            {/* Custom Video Controls */}
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-              <Button
-                onClick={togglePlay}
-                className="bg-black/50 hover:bg-black/70 text-white border-0 sm:w-auto w-12 h-12 p-0"
-                size="lg"
-              >
-                {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-              </Button>
-
-              <Button
-                onClick={toggleMute}
-                className="bg-black/50 hover:bg-black/70 text-white border-0 sm:w-auto w-12 h-12 p-0"
-                size="lg"
-              >
-                {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
-              </Button>
-            </div>
-
-            {/* Migration Dates Overlay */}
-            <div className="absolute top-4 right-4 bg-black/70 text-white px-2 sm:px-4 py-2 rounded-lg">
-              <div className="text-xs sm:text-sm font-semibold">Migration Season</div>
-              <div className="text-sm sm:text-lg font-bold">July - October</div>
-            </div>
-          </div>
-        </div>
+             {/* Migration Dates Overlay */}
+             <div className="absolute top-4 right-4 bg-black/70 text-white px-2 sm:px-4 py-2 rounded-lg">
+               <div className="text-xs sm:text-sm font-semibold">Migration Season</div>
+               <div className="text-sm sm:text-lg font-bold">July - October</div>
+             </div>
+           </div>
+         </div>
 
         {/* Migration Information */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">

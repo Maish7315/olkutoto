@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -44,8 +44,8 @@ const DestinationDetail = () => {
   const [destinationData, setDestinationData] = useState<DestinationData | null>(null);
   const [userRating, setUserRating] = useState(0);
 
-  // Map slugs to destination data
-  const destinations: Record<string, DestinationData> = {
+  // Map slugs to destination data - memoized for performance
+  const destinations: Record<string, DestinationData> = useMemo(() => ({
     'maasai-mara-national-park': {
       name: 'Maasai Mara National Park',
       description: 'Witness the spectacular Great Wildebeest Migration and encounter Africa\'s Big Five in their natural habitat. This world-renowned reserve offers unparalleled wildlife viewing opportunities.',
@@ -71,7 +71,7 @@ const DestinationDetail = () => {
       name: 'Diani Beach Paradise',
       description: 'Pristine white sand beaches meet turquoise Indian Ocean waters. Perfect for relaxation, water sports, and exploring vibrant coral reefs.',
       images: [
-        'diani/29 Colorful Coastal Living Decorating Inspirations.jpeg',
+        '29 Colorful Coastal Living Decorating Inspirations-CZI39Gcp.jpeg',
         'diani/5c9c1718-04b3-4fc0-bc7b-94665ad34622.jpeg',
         'diani/835bb76c-ceaa-4f23-a3ec-e27e8c8ab851.jpeg',
         'diani/Discover the Hidden Treasures of Sarasota, Florida_ A Day-by-Day Itinerary!.jpeg',
@@ -116,7 +116,7 @@ const DestinationDetail = () => {
       name: 'Amboseli National Park',
       description: 'Iconic views of Mount Kilimanjaro provide the perfect backdrop for incredible elephant encounters and diverse wildlife photography.',
       images: [
-        'amboseli/2-Day Safari in Taita Hills from Mombasa.jpeg',
+        'amboseli/2-Day Safari in Taita Hills from Mombasa-DUz0GCDo.jpeg',
         'amboseli/9 PLACES TO PLAN YOUR VACATION IN KENYA 🔥.jpeg',
         'amboseli/Amboseli National Park Kenya 🇰🇪 Photo by….jpeg',
         'amboseli/Amboseli National Park travel.jpeg',
@@ -163,8 +163,8 @@ const DestinationDetail = () => {
       name: 'Samburu National Reserve',
       description: 'Unique wildlife species not found elsewhere in Kenya, including Grevy\'s zebra, reticulated giraffe, and gerenuk antelope.',
       images: [
-        'samburu/10-Day Samburu_ Nakuru_ Masai Mara_ Naivasha….jpeg',
-        'samburu/11-Day Samburu_Ol Pejeta_ Ark_ Nakuru_ Mara and….jpeg',
+        '10-Day Samburu_ Nakuru_ Masai Mara_ Naivasha.-CJXNqgT5.jpeg',
+        'samburu/11-Day Samburu,Ol Pejeta, Ark, Nakuru, Mara and..jpeg',
         'samburu/7 Days Samburu and Masai Mara Safari Itinerary Ideas.jpeg',
         'samburu/Honeymoon Breakfast - Picture of Sasaab, Samburu National Reserve - Tripadvisor.jpeg',
         'samburu/Rare Wildlife Wonders_ Discover Samburu\'s Unique Zebras and Giraffes_.jpeg',
@@ -258,7 +258,7 @@ const DestinationDetail = () => {
       duration: 'Half Day',
       price: 'Contact Us'
     }
-  };
+  }), []);
 
   // destinations is a static lookup defined in this module; disable exhaustive-deps warning for now
   // eslint-disable-next-line react-hooks/exhaustive-deps

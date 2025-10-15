@@ -41,7 +41,7 @@ const Navigation = () => {
 
   const openWhatsApp = () => {
     const message = encodeURIComponent("Hello! I'd like to inquire about Kenya safari tours. Can you help me plan my trip?");
-    window.open(`https://wa.me/0711939160?text=${message}`, '_blank');
+    window.open(`https://wa.me/+254711939160?text=${message}`, '_blank');
   };
 
   const scrollToSection = (sectionId: string) => {

@@ -24,7 +24,7 @@ const DestinationCard = ({
   
   const openWhatsApp = () => {
     const message = encodeURIComponent(`Hi! I'm interested in visiting ${title}. Can you provide more information about safari packages and availability?`);
-    window.open(`https://wa.me/0711939160?text=${message}`, '_blank');
+    window.open(`https://wa.me/+254711939160?text=${message}`, '_blank');
   };
 
   const openDestinationPage = () => {

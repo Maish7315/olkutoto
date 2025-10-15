@@ -143,7 +143,7 @@ const WildebeestMigration = () => {
               The Great Wildebeest Migration occurs annually from July to October, with the most spectacular river crossings happening in September and October.
             </p>
             <Button
-              onClick={() => window.open(`https://wa.me/0711939160?text=Hi! I'm interested in booking a safari to see the Great Wildebeest Migration. Can you help me plan the perfect trip?`, '_blank')}
+              onClick={() => window.open(`https://wa.me/+254711939160?text=Hi! I'm interested in booking a safari to see the Great Wildebeest Migration. Can you help me plan the perfect trip?`, '_blank')}
               size="lg"
               className="bg-primary hover:bg-primary-glow text-primary-foreground px-8 py-4 text-lg glow-primary transition-bounce hover:scale-105"
             >

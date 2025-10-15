@@ -172,7 +172,7 @@ const HellsGateGallery = () => {
                       `Additional Requirements: ${message}\n\n` +
                       `Please help me plan this amazing safari adventure!`
                     );
-                    window.open(`https://wa.me/0711939160?text=${enquiryMessage}`, '_blank');
+                    window.open(`https://wa.me/+254711939160?text=${enquiryMessage}`, '_blank');
                   }}
                   className="grid md:grid-cols-2 gap-6"
                 >
@@ -321,7 +321,7 @@ const HellsGateGallery = () => {
                       <Button
                         onClick={() => {
                           const message = encodeURIComponent(`Hi! I'm interested in booking a trip to ${destinationData.name}. Can you help me plan this adventure?`);
-                          window.open(`https://wa.me/0711939160?text=${message}`, '_blank');
+                          window.open(`https://wa.me/+254711939160?text=${message}`, '_blank');
                         }}
                         className="w-full bg-accent hover:bg-accent-glow text-accent-foreground"
                         size="lg"

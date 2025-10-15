@@ -44,7 +44,7 @@ const AIFeatures = () => {
     const message = encodeURIComponent(
       `Hi! I'm interested in planning a ${tripDuration[0]}-day trip to Kenya.\n\nDestinations: ${selectedDestinations.join(', ') || 'Not specified'}\nActivities: ${selectedActivities.join(', ') || 'Not specified'}\n\nCan you help me customize this itinerary?`
     );
-    window.open(`https://wa.me/0711939160?text=${message}`, '_blank');
+    window.open(`https://wa.me/+254711939160?text=${message}`, '_blank');
   };
 
   return (

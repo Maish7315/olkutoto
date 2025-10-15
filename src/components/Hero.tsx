@@ -16,7 +16,7 @@ const Hero = () => {
 
   const openWhatsApp = () => {
     const message = encodeURIComponent("Hello! I'm interested in exploring Kenya's amazing destinations. Can you help me plan my dream safari adventure?");
-    window.open(`https://wa.me/0711939160?text=${message}`, '_blank');
+    window.open(`https://wa.me/+254711939160?text=${message}`, '_blank');
   };
 
   return (

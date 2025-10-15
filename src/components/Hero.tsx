@@ -48,7 +48,7 @@ const Hero = () => {
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-delayed">
           Experience Africa's most breathtaking wildlife, pristine beaches, and rich cultural heritage.
-          Your dream safari adventure awaits with Olkutoto Travels.
+          Your dream safari adventure awaits with Olkutoto Travels. Best and safest Kenya safari tours.
         </p>
 
         {/* Feature Tags */}
@@ -58,10 +58,10 @@ const Hero = () => {
             50+ Languages Supported
           </span>
           <span className="glass-morphism px-4 py-2 rounded-full text-white/90 text-sm">
-            ⭐ World-Class Safari Experiences
+            ⭐ World-Class Safari Experiences ⭐
           </span>
           <span className="glass-morphism px-4 py-2 rounded-full text-white/90 text-sm">
-            🦁 Big Five Guaranteed
+            🦁 Big Five Guaranteed 🦁
           </span>
         </div>
 

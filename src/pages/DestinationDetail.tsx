@@ -23,18 +23,15 @@ interface DestinationData {
 
 // Resolve all assets in src/assets at build time to their final URLs.
 // import.meta.glob with { query: '?url', eager: true } returns a map of pathname -> url string.
-const assetUrls = import.meta.glob('/src/assets/**', { query: '?url', eager: true }) as Record<string, string>;
+const assetUrls = import.meta.glob('../assets/**', { query: '?url', eager: true }) as Record<string, string>;
 
 // Helper function to resolve asset URLs
 const resolveAssetUrl = (path: string) => {
   // Normalize path (remove leading slash if present)
   const normalized = path.replace(/^\//, '');
-  // Try exact and fallback matches
-  if (assetUrls[`/${normalized}`]) return assetUrls[`/${normalized}`];
-  // If not exact, search for a key that ends with the filename
-  const filename = normalized.split('/').pop();
-  const matchKey = Object.keys(assetUrls).find(k => k.endsWith(filename || ''));
-  return matchKey ? assetUrls[matchKey] : path; // fallback to original path
+  // Construct the key relative to the assets directory
+  const key = `../assets/${normalized}`;
+  return assetUrls[key] || path; // fallback to original path
 };
 
 const DestinationDetail = () => {
@@ -53,10 +50,10 @@ const DestinationDetail = () => {
         'mara/fece49bf-dafb-4893-8a54-68c9dab8ac8e.jpeg',
         'mara/Game drives in Samburu National Reserve-Kenya.jpeg',
         'mara/i-escape - Ultimate Wildlife (13 days, 12 nights)Cape Town, Hermanus, Winelands, Sabi Sand Game Reserve.jpeg',
-        'mara/Nic Proust - Bush24 -The sun was setting in the….jpeg',
+        'mara/Nic Proust - Bush24 -The sun was setting in the---.jpeg',
         'mara/Selous Game Reserve - Tanzania.jpeg',
         'mara/Thanda Safari Review_ The Perfect Bush Break in KZN.jpeg',
-        'mara/This is to be seen in kenya, its the annual wild….jpeg',
+        'mara/This is to be seen in kenya, its the annual wild---.jpeg',
         'mara/Ulusaba Rock Lodge - Sabi Sand Game Reserve (South Africa) - HIP Hotels.jpeg'
       ],
       category: 'Wildlife Safari',
@@ -90,19 +87,19 @@ const DestinationDetail = () => {
       name: 'Tsavo National Parks',
       description: 'Kenya\'s largest protected area, famous for red elephants, diverse wildlife, and dramatic landscapes. Experience authentic African wilderness.',
       images: [
-        'tsavo/East African Oryx or Beisa Oryx(Oryx beisa) at….jpeg',
-        'tsavo/Embrace Unique Activities Beyond game drive in….jpeg',
+        'tsavo/East African Oryx or Beisa Oryx(Oryx beisa) at---.jpeg',
+        'tsavo/Embrace Unique Activities Beyond game drive in---.jpeg',
         'tsavo/Explore Tarangire National Park In Tanzania.jpeg',
         'tsavo/Giraffes and sunset in Tsavo East and Tsavo West National Park stock photography.jpeg',
         'tsavo/Kenya Travel Guide – Parks, Best Time, Reviews & More!.jpeg',
-        'tsavo/Plan to explore Tsavo West National Park and….jpeg',
+        'tsavo/Plan to explore Tsavo West National Park and---.jpeg',
         'tsavo/Safari in Kenya — BARBARA ATHANASSIADIS, Travel Writer.jpeg',
         'tsavo/Seeing Chimpanzees In The Wild At Gombe Stream National Park.jpeg',
         'tsavo/Serengeti National Park - National Park Field Guide.jpeg',
-        'tsavo/There is no end to the adventures, we can have if….jpeg',
+        'tsavo/There is no end to the adventures, we can have if---.jpeg',
         'tsavo/WILDLIFE KENYA SAFARIS - DAY TRIPS (2025) All You Should Know BEFORE You Go (w_ Reviews) (1).jpeg',
-        'tsavo/𝐖𝐡𝐞𝐫𝐞 𝐖𝐢𝐥𝐝𝐥𝐢𝐟𝐞 𝐌𝐞𝐞𝐭𝐬….jpeg',
-        'tsavo/📌Watch animals from the aerial view of the….jpeg'
+        'tsavo/𝐖𝐡𝐞𝐫𝐞 𝐖𝐢𝐥𝐝𝐥𝐢𝐟𝐞 𝐌𝐞𝐞𝐭𝐬---.jpeg',
+        'tsavo/📌Watch animals from the aerial view of the---.jpeg'
       ],
       category: 'Wilderness Adventure',
       rating: 4.7,
@@ -118,13 +115,13 @@ const DestinationDetail = () => {
       images: [
         'amboseli/2-Day Safari in Taita Hills from Mombasa-DUz0GCDo.jpeg',
         'amboseli/9 PLACES TO PLAN YOUR VACATION IN KENYA 🔥.jpeg',
-        'amboseli/Amboseli National Park Kenya 🇰🇪 Photo by….jpeg',
+        'amboseli/Amboseli National Park Kenya 🇰🇪 Photo by---.jpeg',
         'amboseli/Amboseli National Park travel.jpeg',
         'amboseli/An African Safari with Kids.jpeg',
-        'amboseli/See things from a different perspective when you….jpeg',
-        'amboseli/Spot the Big Five in Amboseli with Mt_ Kilimanjaro….jpeg',
-        'amboseli/We have daily group departures to; ✓Amboseli….jpeg',
-        'amboseli/🗓️ Day 2_ Tsavo East to Amboseli National Park –….jpeg'
+        'amboseli/See things from a different perspective when you---.jpeg',
+        'amboseli/Spot the Big Five in Amboseli with Mt_ Kilimanjaro---.jpeg',
+        'amboseli/We have daily group departures to; ✓Amboseli---.jpeg',
+        'amboseli/🗓️ Day 2_ Tsavo East to Amboseli National Park –---.jpeg'
       ],
       category: 'Mountain Safari',
       rating: 4.8,
@@ -138,10 +135,10 @@ const DestinationDetail = () => {
       name: 'Lake Nakuru National Park',
       description: 'Famous for millions of flamingos creating a pink spectacle, plus rhino sanctuary and diverse wildlife in a compact area.',
       images: [
-        'lake-nakuru/9-Day Luxury and Scenic Kenya Safari These safari….jpeg',
-        'lake nakuru/A phenominal wonder of the World! The great….jpeg',
-        'lake nakuru/Book and enjoy a 4-day getaway experience at the….jpeg',
-        'lake nakuru/Can you guess the name of this enchanting lake….jpeg',
+        'lake-nakuru/9-Day Luxury and Scenic Kenya Safari These safari---.jpeg',
+        'lake nakuru/A phenominal wonder of the World! The great---.jpeg',
+        'lake nakuru/Book and enjoy a 4-day getaway experience at the---.jpeg',
+        'lake nakuru/Can you guess the name of this enchanting lake---.jpeg',
         'lake nakuru/f11a27ee-c19a-4586-80dd-a32abf256520.jpeg',
         'lake nakuru/Kenya wildlife safari Masai mara game reserve and Lake Nakuru national park_.jpeg',
         'lake nakuru/Kenya’s Lake Nakuru National Park_ A Photo Story of Wild Riches.jpeg',
@@ -163,8 +160,8 @@ const DestinationDetail = () => {
       name: 'Samburu National Reserve',
       description: 'Unique wildlife species not found elsewhere in Kenya, including Grevy\'s zebra, reticulated giraffe, and gerenuk antelope.',
       images: [
-        '10-Day Samburu_ Nakuru_ Masai Mara_ Naivasha.-CJXNqgT5.jpeg',
-        'samburu/11-Day Samburu,Ol Pejeta, Ark, Nakuru, Mara and..jpeg',
+        '10-Day Samburu_ Nakuru_ Masai Mara_ Naivasha---CJXNqgT5.jpeg',
+        'samburu/11-Day Samburu_Ol Pejeta_ Ark_ Nakuru_ Mara and---Bcvj_yD7.jpeg',
         'samburu/7 Days Samburu and Masai Mara Safari Itinerary Ideas.jpeg',
         'samburu/Honeymoon Breakfast - Picture of Sasaab, Samburu National Reserve - Tripadvisor.jpeg',
         'samburu/Rare Wildlife Wonders_ Discover Samburu\'s Unique Zebras and Giraffes_.jpeg',
@@ -173,7 +170,7 @@ const DestinationDetail = () => {
         'samburu/Samburu National Reserve – Travel Guide, Map & More!.jpeg',
         'samburu/SARUNI SAMBURU - Updated 2025 Prices &  Cottage Reviews (Kenya_Samburu National Reserve).jpeg',
         'samburu/Two Days in Samburu National Reserve.jpeg',
-        'samburu/When you go on an African safari in Kenya and… (1).jpeg'
+        'samburu/When you go on an African safari in Kenya and--- (1).jpeg'
       ],
       category: 'Unique Wildlife',
       rating: 4.7,
@@ -193,7 +190,7 @@ const DestinationDetail = () => {
         'lamu/Lamu Island, Kenya.jpeg',
         'lamu/Lamu Old Town (2025) - All You Need to Know BEFORE You Go (with Reviews).jpeg',
         'lamu/Lamu port - Kenya.jpeg',
-        'lamu/Lamu, a small island off the coast of Kenya….jpeg',
+        'lamu/Lamu, a small island off the coast of Kenya---.jpeg',
         'lamu/Starfish.jpeg',
         'lamu/The 71 most beautiful places in the world (1).jpeg',
         'lamu/Woman hand with henna - Lamu Kenya.jpeg'
@@ -212,15 +209,15 @@ const DestinationDetail = () => {
       images: [
         'hell\'s gate/hell\'s gate gorge, naivasha, kenya.jpeg',
         'hell\'s gate/hell\'s gate national park - kenya.jpeg',
-        'hell\'s gate/Hell\'s Gate National Park lies south of Lake… (1).jpeg',
-        'hell\'s gate/Hell\'s Gate National Park lies south of Lake….jpeg',
+        'hell\'s gate/Hell\'s Gate National Park lies south of Lake--- (1).jpeg',
+        'hell\'s gate/Hell\'s Gate National Park lies south of Lake----.jpeg',
         'hell\'s gate/Hell\'s Gate National Park, Kenya (1).jpeg',
         'hell\'s gate/Hells Gate National Park - A Day Trip From Nairobi.jpeg',
         'hell\'s gate/Hells Gate National Park and Green Crater Lake, Kenya.jpeg',
-        'hell\'s gate/Hell\'s Gate National Park, Kenya The day after….jpeg',
+        'hell\'s gate/Hell\'s Gate National Park, Kenya The day after----.jpeg',
         'hell\'s gate/Hell\'s Gate National Park.jpeg',
         'hell\'s gate/_Cycle with Wildlife_ Hell\'s Gate\'s Geothermal Wonders Await!__.jpeg',
-        'hell\'s gate/__🌄 1-Day Trip to Hell\'s Gate and Lake Naivasha….jpeg'
+        'hell\'s gate/__🌄 1-Day Trip to Hell\'s Gate and Lake Naivasha----.jpeg'
       ],
       category: 'Adventure Park',
       rating: 4.4,
@@ -245,10 +242,10 @@ const DestinationDetail = () => {
         'fortjesus/Fort Jesus_.jpeg',
         'fortjesus/Fort Jésus, Mombasa_ Kenya.jpeg',
         'fortjesus/Kenya cruise port_ Mombasa.jpeg',
-        'fortjesus/MOMBASA CITY DAY TOUR Explore the beautiful city….jpeg',
+        'fortjesus/MOMBASA CITY DAY TOUR Explore the beautiful city---.jpeg',
         'fortjesus/mombasa, kenya_ fort jesus museum.jpeg',
-        'fortjesus/Today, our clients embarked on an unforgettable… (1).jpeg',
-        'fortjesus/Today, our clients embarked on an unforgettable….jpeg'
+        'fortjesus/Today, our clients embarked on an unforgettable--- (1).jpeg',
+        'fortjesus/Today, our clients embarked on an unforgettable---.jpeg'
       ],
       category: 'Historical Site',
       rating: 4.3,

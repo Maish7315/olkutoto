@@ -1,10 +1,10 @@
 import { MessageCircle, Phone, Mail, MapPin, Globe, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
-import logo from "@/assets/roy-B0dLymYk.png";
+import logo from "@/assets/roy (2).png";
 
 const Footer = () => {
   const openWhatsApp = () => {
     const message = encodeURIComponent("Hello! I'd like to inquire about Kenya safari tours. Can you help me plan my trip?");
-    window.open(`https://wa.me/+254711939160?text=${message}`, '_blank');
+    window.open(`https://wa.me/+254707608690?text=${message}`, '_blank');
   };
 
   return (
@@ -51,15 +51,19 @@ const Footer = () => {
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">0711 939 160</span>
+                <a href="tel:+254118805166" className="text-muted-foreground hover:text-primary transition-colors underline">011 880 5166</a>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="w-4 h-4 text-primary" />
+                <a href="tel:+254711939160" className="text-muted-foreground hover:text-primary transition-colors underline">0711 939 160</a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary" />
                 <button
-                  onClick={() => window.open('mailto:skoriata@gmail.com', '_blank')}
+                  onClick={() => window.open('mailto:olkutototours@gmail.com', '_blank')}
                   className="text-muted-foreground hover:text-primary transition-colors underline"
                 >
-                  skoriata@gmail.com
+                  olkutototours@gmail.com
                 </button>
               </div>
               <div className="flex items-center space-x-3">
@@ -93,7 +97,7 @@ const Footer = () => {
         <div className="border-t border-border mt-8 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-sm text-muted-foreground">
-              © 2025 Olkutoto Tours & Travel. All rights reserved.
+              © 2026 Olkutoto Tours & Travel. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>

@@ -9,12 +9,81 @@ import {
 } from "@/components/ui/select";
 import { Globe, Menu, X, MessageCircle, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
-import logo from "@/assets/roy-B0dLymYk.png";
+import logo from "@/assets/roy (2).png";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [selectedLanguage, setSelectedLanguage] = useState(() => localStorage.getItem('selected-language') || 'en');
   const { theme, setTheme } = useTheme();
+
+  const translations = {
+    en: {
+      destinations: 'Destinations',
+      experiences: 'Experiences',
+      about: 'About Kenya',
+      reviews: 'Reviews',
+      whatsapp: 'WhatsApp',
+      helloMessage: "Hello! I'd like to inquire about Kenya safari tours. Can you help me plan my trip?"
+    },
+    fr: {
+      destinations: 'Destinations',
+      experiences: 'Expériences',
+      about: 'À propos du Kenya',
+      reviews: 'Avis',
+      whatsapp: 'WhatsApp',
+      helloMessage: "Bonjour! J'aimerais m'informer sur les safaris au Kenya. Pouvez-vous m'aider à planifier mon voyage?"
+    },
+    es: {
+      destinations: 'Destinos',
+      experiences: 'Experiencias',
+      about: 'Sobre Kenia',
+      reviews: 'Reseñas',
+      whatsapp: 'WhatsApp',
+      helloMessage: "¡Hola! Me gustaría informarme sobre safaris en Kenia. ¿Puedes ayudarme a planificar mi viaje?"
+    },
+    de: {
+      destinations: 'Ziele',
+      experiences: 'Erlebnisse',
+      about: 'Über Kenia',
+      reviews: 'Bewertungen',
+      whatsapp: 'WhatsApp',
+      helloMessage: "Hallo! Ich möchte mich über Kenia-Safaris informieren. Können Sie mir helfen, meine Reise zu planen?"
+    },
+    zh: {
+      destinations: '目的地',
+      experiences: '体验',
+      about: '关于肯尼亚',
+      reviews: '评论',
+      whatsapp: 'WhatsApp',
+      helloMessage: "你好！我想要了解肯尼亚的野生动物园旅行。你能帮我规划我的旅行吗？"
+    },
+    ja: {
+      destinations: '目的地',
+      experiences: '体験',
+      about: 'ケニアについて',
+      reviews: 'レビュー',
+      whatsapp: 'WhatsApp',
+      helloMessage: "こんにちは！ケニアのサファリツアーについて問い合わせたいです。旅行の計画をお手伝いいただけますか？"
+    },
+    ar: {
+      destinations: 'الوجهات',
+      experiences: 'التجارب',
+      about: 'حول كينيا',
+      reviews: 'التقييمات',
+      whatsapp: 'واتساب',
+      helloMessage: "مرحبا! أود الاستفسار عن رحلات السفاري في كينيا. هل يمكنك مساعدتي في تخطيط رحلتي؟"
+    },
+    ru: {
+      destinations: 'Направления',
+      experiences: 'Опыт',
+      about: 'О Кении',
+      reviews: 'Отзывы',
+      whatsapp: 'WhatsApp',
+      helloMessage: "Здравствуйте! Я хотел бы узнать о сафари-турах в Кению. Можете ли вы помочь мне спланировать поездку?"
+    }
+  };
+
+  const t = translations[selectedLanguage as keyof typeof translations] || translations.en;
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -40,8 +109,8 @@ const Navigation = () => {
   ];
 
   const openWhatsApp = () => {
-    const message = encodeURIComponent("Hello! I'd like to inquire about Kenya safari tours. Can you help me plan my trip?");
-    window.open(`https://wa.me/+254711939160?text=${message}`, '_blank');
+    const message = encodeURIComponent(t.helloMessage);
+    window.open(`https://wa.me/+254707608690?text=${message}`, '_blank');
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -64,36 +133,36 @@ const Navigation = () => {
               alt="Olkutoto Tours & Travel Logo"
               className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover"
             />
-            <span className="text-lg sm:text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-              Olkutoto Tours & Travel
+            <span className="text-sm sm:text-lg sm:text-xl font-bold bg-gradient-hero bg-clip-text text-transparent leading-tight">
+              Olkutoto<br className="sm:hidden" />Tours
             </span>
           </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <button 
+            <button
               onClick={() => scrollToSection('destinations')}
               className="text-foreground hover:text-primary transition-smooth"
             >
-              Destinations
+              {t.destinations}
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('experiences')}
               className="text-foreground hover:text-primary transition-smooth"
             >
-              Experiences
+              {t.experiences}
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('about')}
               className="text-foreground hover:text-primary transition-smooth"
             >
-              About Kenya
+              {t.about}
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection('testimonials')}
               className="text-foreground hover:text-primary transition-smooth"
             >
-              Reviews
+              {t.reviews}
             </button>
           </div>
 
@@ -101,7 +170,10 @@ const Navigation = () => {
           <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
 
             {/* Language Selector */}
-            <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
+            <Select value={selectedLanguage} onValueChange={(value) => {
+              setSelectedLanguage(value);
+              localStorage.setItem('selected-language', value);
+            }}>
               <SelectTrigger className="w-24 sm:w-32 border-primary/20 bg-background/50">
                 <Globe className="w-4 h-4 mr-1 sm:mr-2" />
                 <SelectValue />
@@ -123,23 +195,25 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => {
-                const newTheme = theme === "light" ? "dark" : "light";
-                setTheme(newTheme);
+                const themes: ("light" | "dark" | "system")[] = ["light", "dark", "system"];
+                const currentIndex = themes.indexOf(theme);
+                const nextIndex = (currentIndex + 1) % themes.length;
+                setTheme(themes[nextIndex]);
               }}
               className="w-10 h-10 rounded-full hover:bg-primary/10 transition-colors"
             >
-              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <Sun className={`h-4 w-4 transition-all ${theme === "light" ? "rotate-0 scale-100" : "rotate-90 scale-0"}`} />
+              <Moon className={`absolute h-4 w-4 transition-all ${theme === "dark" ? "rotate-0 scale-100" : theme === "system" ? "rotate-45 scale-75" : "-rotate-90 scale-0"}`} />
               <span className="sr-only">Toggle theme</span>
             </Button>
 
             {/* WhatsApp Button */}
-            <Button 
+            <Button
               onClick={openWhatsApp}
               className="hidden sm:flex bg-accent hover:bg-accent-glow text-accent-foreground glow-adventure transition-bounce hover:scale-105"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              WhatsApp
+              {t.whatsapp}
             </Button>
 
             {/* Mobile Menu Toggle */}
@@ -176,13 +250,53 @@ const Navigation = () => {
               >
                 About Kenya
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection('testimonials')}
                 className="text-left text-foreground hover:text-primary transition-smooth py-2"
               >
                 Reviews
               </button>
-              <Button 
+
+              {/* Mobile Controls */}
+              <div className="flex items-center justify-between py-2 border-t border-white/10 mt-4 pt-4">
+                <Select value={selectedLanguage} onValueChange={(value) => {
+                  setSelectedLanguage(value);
+                  localStorage.setItem('selected-language', value);
+                }}>
+                  <SelectTrigger className="w-24 border-primary/20 bg-background/50">
+                    <Globe className="w-4 h-4 mr-1" />
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {languages.map((lang) => (
+                      <SelectItem key={lang.code} value={lang.code}>
+                        <span className="flex items-center gap-2">
+                          <span>{lang.flag}</span>
+                          <span>{lang.name}</span>
+                        </span>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    const themes: ("light" | "dark" | "system")[] = ["light", "dark", "system"];
+                    const currentIndex = themes.indexOf(theme);
+                    const nextIndex = (currentIndex + 1) % themes.length;
+                    setTheme(themes[nextIndex]);
+                  }}
+                  className="w-10 h-10 rounded-full hover:bg-primary/10 transition-colors"
+                >
+                  <Sun className={`h-4 w-4 transition-all ${theme === "light" ? "rotate-0 scale-100" : "rotate-90 scale-0"}`} />
+                  <Moon className={`absolute h-4 w-4 transition-all ${theme === "dark" ? "rotate-0 scale-100" : theme === "system" ? "rotate-45 scale-75" : "-rotate-90 scale-0"}`} />
+                  <span className="sr-only">Toggle theme</span>
+                </Button>
+              </div>
+
+              <Button
                 onClick={openWhatsApp}
                 className="w-full bg-accent hover:bg-accent-glow text-accent-foreground mt-4"
               >

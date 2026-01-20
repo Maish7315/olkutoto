@@ -60,10 +60,10 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary" />
                 <button
-                  onClick={() => window.open('mailto:olkutototours@gmail.com', '_blank')}
+                  onClick={() => window.open('mailto:orkutototours@gmail.com', '_blank')}
                   className="text-muted-foreground hover:text-primary transition-colors underline"
                 >
-                  olkutototours@gmail.com
+                  orkutototours@gmail.com
                 </button>
               </div>
               <div className="flex items-center space-x-3">

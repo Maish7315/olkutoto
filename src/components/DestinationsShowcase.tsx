@@ -1,15 +1,60 @@
+import { useState } from 'react';
 import DestinationCard from './DestinationCard';
-import maasaiMaraImage from "@/assets/maasai-mara.jpg";
-import dianiBeachImage from "@/assets/diani-beach.jpg";
-import tsavoLionsImage from "@/assets/tsavo-lions.jpg";
-import amboseliImage from "@/assets/amboseli-elephants.jpg";
-import nakuruImage from "@/assets/lake-nakuru-flamingos.jpg";
-import samburuImage from "@/assets/samburu-wildlife.jpg";
-import lamuImage from "@/assets/lamu.jpg";
-import hellsGateImage from "@/assets/hell's gate/Hell's Gate National Park lies south of Lake….jpeg";
-import fortJesusImage from "@/assets/mombasa_ kenya_ fort jesus museum-C__h5-AU.jpeg";
+import maasaiMaraImage from "../assets/maasai-mara.jpg";
+import dianiBeachImage from "../assets/diani-beach.jpg";
+import tsavoLionsImage from "../assets/tsavo-lions.jpg";
+import amboseliImage from "../assets/amboseli-elephants.jpg";
+import nakuruImage from "../assets/lake-nakuru-flamingos.jpg";
+import samburuImage from "../assets/samburu-wildlife.jpg";
+import lamuImage from "../assets/lamu.jpg";
+import hellsGateImage from "../assets/Hells Gate National Park - A Day Trip From Nairobi-BxGL_meQ.jpeg";
+import fortJesusImage from "../assets/mombasa_ kenya_ fort jesus museum-C__h5-AU.jpeg";
+
+// Additional adventure images - using verified existing images
+import heroKenyaImage from "../assets/hero-kenya.jpg";
+import review1Image from "../assets/review 1 .jpg";
+import review2Image from "../assets/review 2.jpg";
+import review3Image from "../assets/review 3.jpg";
+import royImage from "../assets/roy (2).png";
+import roy2Image from "../assets/roy2.png";
+import safariImage from "../assets/Safari in Kenya — BARBARA ATHANASSIADIS_ Travel Writer-BMQQlWer.jpeg";
+import kenyaTravelImage from "../assets/Kenya Travel Guide – Parks_ Best Time_ Reviews _ More!-BEqwugbx.jpeg";
+import wildlifeKenyaImage from "../assets/Kenya wildlife safari Masai mara game reserve and Lake Nakuru national park_-BmaB9kFa.jpeg";
+import image1 from "../assets/image 1.jpeg";
+import image2 from "../assets/image 2.jpeg";
+import image3 from "../assets/image 3.jpeg";
+import image4 from "../assets/image 4.jpeg";
+import image5 from "../assets/image 5.jpeg";
+import image6 from "../assets/image 6.jpeg";
+import image7 from "../assets/image 7.jpeg";
+import image8 from "../assets/image 8.jpeg";
+import image9 from "../assets/image 9.jpeg";
+import image10 from "../assets/image 10.jpeg";
+import image11 from "../assets/image 11.jpeg";
+import image12 from "../assets/image 12.jpeg";
+import image13 from "../assets/image 13.jpeg";
+import image14 from "../assets/image 14.jpeg";
 
 const DestinationsShowcase = () => {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
+  const adventureImages = [
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7,
+    image8,
+    image9,
+    image10,
+    image11,
+    image12,
+    image13,
+    image14
+  ];
+
   const destinations = [
     {
       title: "Maasai Mara National Park",
@@ -90,6 +135,22 @@ const DestinationsShowcase = () => {
 
   const allDestinations = [...destinations, ...additionalDestinations];
 
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
+  };
+
+  const closeModal = () => {
+    setSelectedImageIndex(null);
+  };
+
+  const nextImage = () => {
+    setSelectedImageIndex((prev) => (prev !== null ? (prev + 1) % adventureImages.length : 0));
+  };
+
+  const prevImage = () => {
+    setSelectedImageIndex((prev) => (prev !== null ? (prev - 1 + adventureImages.length) % adventureImages.length : 0));
+  };
+
   return (
     <section id="destinations" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -150,7 +211,98 @@ const DestinationsShowcase = () => {
             </div>
           </div>
         </div>
+
+        {/* More Kenya Adventures Section */}
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="gradient-text">More Kenya Adventures</span> with Olkutoto
+            </h3>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Discover the untold stories and hidden gems of Kenya through our curated collection of unforgettable experiences.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {adventureImages.map((image, index) => (
+              <div
+                key={index}
+                className="relative group cursor-pointer overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                onClick={() => handleImageClick(index)}
+              >
+                <img
+                  src={image}
+                  alt={`Kenya Adventure ${index + 1}`}
+                  className="w-full h-32 md:h-40 object-cover transition-transform group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all flex items-center justify-center">
+                  <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-center">
+                    <svg className="w-8 h-8 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm font-medium">View Gallery</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImageIndex !== null && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+          <div className="relative max-w-5xl max-h-full flex items-center justify-center">
+            <img
+              src={adventureImages[selectedImageIndex]}
+              alt={`Kenya Adventure ${selectedImageIndex + 1}`}
+              className="max-w-full max-h-full object-contain rounded-lg"
+            />
+
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-75 transition-all"
+              aria-label="Close gallery"
+              title="Close gallery"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-75 transition-all"
+              aria-label="Previous image"
+              title="Previous image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-75 transition-all"
+              aria-label="Next image"
+              title="Next image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-50 rounded-full px-4 py-2">
+              <span className="text-sm font-medium">
+                {selectedImageIndex + 1} / {adventureImages.length}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -33,6 +33,23 @@ const DestinationCard = ({
     if (title === "Hell's Gate National Park") {
       // Special handling for Hell's Gate - open dedicated page with all images
       window.open('/hells-gate-gallery', '_self');
+    } else if (title === "Maasai Mara National Park") {
+      // Special handling for Maasai Mara - open dedicated page with all images
+      window.open('/maasai-mara-gallery', '_self');
+    } else if (title === "Diani Beach Paradise") {
+      window.open('/diani-gallery', '_self');
+    } else if (title === "Tsavo National Parks") {
+      window.open('/tsavo-gallery', '_self');
+    } else if (title === "Amboseli National Park") {
+      window.open('/amboseli-gallery', '_self');
+    } else if (title === "Lake Nakuru National Park") {
+      window.open('/lake-nakuru-gallery', '_self');
+    } else if (title === "Samburu National Reserve") {
+      window.open('/samburu-gallery', '_self');
+    } else if (title === "Lamu Island Heritage") {
+      window.open('/lamu-gallery', '_self');
+    } else if (title === "Fort Jesus Museum") {
+      window.open('/fort-jesus-gallery', '_self');
     } else {
       window.open(`/${slug}`, '_self');
     }

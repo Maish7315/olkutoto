@@ -6,17 +6,20 @@ import { Rating } from "@/components/ui/rating";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { ArrowLeft, Calendar as CalendarIcon, MessageCircle, MapPin, Star } from "lucide-react";
-import hellsGateGorge from "@/assets/hell's gate/hell's gate gorge, naivasha, kenya.jpeg";
-import hellsGateNationalPark from "@/assets/hell's gate/hell's gate national park - kenya.jpeg";
-import hellsGateLake1 from "@/assets/hell's gate/Hell's Gate National Park lies south of Lake… (1).jpeg";
-import hellsGateLake from "@/assets/hell's gate/Hell's Gate National Park lies south of Lake….jpeg";
-import hellsGateKenya1 from "@/assets/hell's gate/Hell's Gate National Park, Kenya (1).jpeg";
-import hellsGateDayTrip from "@/assets/hell's gate/Hells Gate National Park - A Day Trip From Nairobi.jpeg";
-import hellsGateGreenCrater from "@/assets/hell's gate/Hells Gate National Park and Green Crater Lake, Kenya.jpeg";
-import hellsGateDayAfter from "@/assets/hell's gate/Hell’s Gate National Park, Kenya The day after….jpeg";
-import hellsGateMain from "@/assets/hell's gate/Hell’s Gate National Park.jpeg";
-import hellsGateCycle from "@/assets/hell's gate/_Cycle with Wildlife_ Hell's Gate's Geothermal Wonders Await!__.jpeg";
-import hellsGateTrip from "@/assets/hell's gate/__🌄 1-Day Trip to Hell's Gate and Lake Naivasha….jpeg";
+
+const imageModules = import.meta.glob('../assets/hell\'s gate/*.jpeg', { eager: true }) as Record<string, { default: string }>;
+
+const hellsGateGorge = imageModules['../assets/hell\'s gate/hell\'s gate gorge, naivasha, kenya.jpeg'].default;
+const hellsGateNationalPark = imageModules['../assets/hell\'s gate/hell\'s gate national park - kenya.jpeg'].default;
+const hellsGateLake1 = imageModules['../assets/hell\'s gate/Hell\'s Gate National Park lies south of Lake--- (1).jpeg'].default;
+const hellsGateLake = imageModules['../assets/hell\'s gate/Hell\'s Gate National Park lies south of Lake---.jpeg'].default;
+const hellsGateKenya1 = imageModules['../assets/hell\'s gate/Hell\'s Gate National Park, Kenya (1).jpeg'].default;
+const hellsGateDayTrip = imageModules['../assets/hell\'s gate/Hells Gate National Park - A Day Trip From Nairobi.jpeg'].default;
+const hellsGateGreenCrater = imageModules['../assets/hell\'s gate/Hells Gate National Park and Green Crater Lake, Kenya.jpeg'].default;
+const hellsGateDayAfter = imageModules['../assets/hell\'s gate/Hell’s Gate National Park, Kenya The day after---.jpeg'].default;
+const hellsGateMain = imageModules['../assets/hell\'s gate/Hell’s Gate National Park.jpeg'].default;
+const hellsGateCycle = imageModules['../assets/hell\'s gate/_Cycle with Wildlife_ Hell\'s Gate\'s Geothermal Wonders Await!__.jpeg'].default;
+const hellsGateTrip = imageModules['../assets/hell\'s gate/__🌄 1-Day Trip to Hell\'s Gate and Lake Naivasha---.jpeg'].default;
 
 const HellsGateGallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -58,7 +61,7 @@ const HellsGateGallery = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background">
       <Navigation />
 
       <main className="pt-20">

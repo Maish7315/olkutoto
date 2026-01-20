@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select";
 import { Globe, Menu, X, MessageCircle, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
-import logo from "@/assets/roy-B0dLymYk.png";
+import logo from "@/assets/roy (2).png";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -133,8 +133,8 @@ const Navigation = () => {
               alt="Olkutoto Tours & Travel Logo"
               className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover"
             />
-            <span className="text-lg sm:text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-              Olkutoto Tours & Travel
+            <span className="text-sm sm:text-lg sm:text-xl font-bold bg-gradient-hero bg-clip-text text-transparent leading-tight">
+              Olkutoto<br className="sm:hidden" />Tours
             </span>
           </button>
 
@@ -250,13 +250,53 @@ const Navigation = () => {
               >
                 About Kenya
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection('testimonials')}
                 className="text-left text-foreground hover:text-primary transition-smooth py-2"
               >
                 Reviews
               </button>
-              <Button 
+
+              {/* Mobile Controls */}
+              <div className="flex items-center justify-between py-2 border-t border-white/10 mt-4 pt-4">
+                <Select value={selectedLanguage} onValueChange={(value) => {
+                  setSelectedLanguage(value);
+                  localStorage.setItem('selected-language', value);
+                }}>
+                  <SelectTrigger className="w-24 border-primary/20 bg-background/50">
+                    <Globe className="w-4 h-4 mr-1" />
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {languages.map((lang) => (
+                      <SelectItem key={lang.code} value={lang.code}>
+                        <span className="flex items-center gap-2">
+                          <span>{lang.flag}</span>
+                          <span>{lang.name}</span>
+                        </span>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    const themes: ("light" | "dark" | "system")[] = ["light", "dark", "system"];
+                    const currentIndex = themes.indexOf(theme);
+                    const nextIndex = (currentIndex + 1) % themes.length;
+                    setTheme(themes[nextIndex]);
+                  }}
+                  className="w-10 h-10 rounded-full hover:bg-primary/10 transition-colors"
+                >
+                  <Sun className={`h-4 w-4 transition-all ${theme === "light" ? "rotate-0 scale-100" : "rotate-90 scale-0"}`} />
+                  <Moon className={`absolute h-4 w-4 transition-all ${theme === "dark" ? "rotate-0 scale-100" : theme === "system" ? "rotate-45 scale-75" : "-rotate-90 scale-0"}`} />
+                  <span className="sr-only">Toggle theme</span>
+                </Button>
+              </div>
+
+              <Button
                 onClick={openWhatsApp}
                 className="w-full bg-accent hover:bg-accent-glow text-accent-foreground mt-4"
               >

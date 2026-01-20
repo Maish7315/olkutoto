@@ -1,5 +1,5 @@
 import { MessageCircle, Phone, Mail, MapPin, Globe, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
-import logo from "@/assets/roy-B0dLymYk.png";
+import logo from "@/assets/roy (2).png";
 
 const Footer = () => {
   const openWhatsApp = () => {
@@ -51,7 +51,11 @@ const Footer = () => {
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary" />
-                <a href="tel:+254707608690" className="text-muted-foreground hover:text-primary transition-colors underline">0707 608 690</a>
+                <a href="tel:+254118805166" className="text-muted-foreground hover:text-primary transition-colors underline">011 880 5166</a>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="w-4 h-4 text-primary" />
+                <a href="tel:+254711939160" className="text-muted-foreground hover:text-primary transition-colors underline">0711 939 160</a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary" />
